@@ -240,14 +240,14 @@ window.onload = function() {
                 if (recognitionActive) return;
 
                 try {
-                    blowInstruction.textContent = "Listening... Blow into your mic!";
+                    blowInstruction.textContent = "Ucapkan Disini dan TIUP!";
                     recognition.start();
                     recognitionActive = true;
                     isBlowDetected = false;
                     blowIntensity = 0;
                 } catch (e) {
                     console.log('Recognition error:', e);
-                    blowInstruction.textContent = "Error starting microphone. Click to try again.";
+                    blowInstruction.textContent = "Terjadi kesalahan saat memulai mikrofon. Klik untuk mencoba lagi.";
                     recognitionActive = false;
                 }
             };
@@ -285,7 +285,7 @@ window.onload = function() {
 
         recognition.onerror = function(event) {
             if (event.error !== 'no-speech' && blowInstruction) {
-                blowInstruction.textContent = "Try again! Click to blow out the candle.";
+                blowInstruction.textContent = "Coba lagi! Klik untuk meniup lilin.";
             }
             recognitionActive = false;
             isBlowDetected = false;
@@ -294,11 +294,11 @@ window.onload = function() {
         recognition.onend = function() {
             recognitionActive = false;
             if (flameOn && blowInstruction) {
-                blowInstruction.textContent = "Click to blow out the candle!";
+                blowInstruction.textContent = "Klik untuk meniup lilin!";
             }
         };
     } else if (blowInstruction) {
-        blowInstruction.textContent = "Your browser doesn't support voice blowing!";
+        blowInstruction.textContent = "Browser Anda tidak mendukung fitur tiupan suara!";
     }
 
     if (resetBtn) {
